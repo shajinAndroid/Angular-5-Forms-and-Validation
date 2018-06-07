@@ -1,0 +1,28 @@
+ {{today | date : 'fullDate'}}
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <form #userForm="ngForm" (ngSubmit)="submit(userForm.value)">
+          <div class="form-group">
+            <label>Name:</label>
+            <input name="name" #nameRef="ngModel" [(ngModel)]="test" required class="form-control"> {{nameRef.className}}
+
+            <div *ngIf="(nameRef.invalid ) && (nameRef.touched)" class="alert alert-danger">
+
+              Please enter a name
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Age:</label>
+            <input name="age" ngModel class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-3 col-xs-6">
+        <pre>{{ userForm.value | json }}</pre>
+
+      </div>
+    </div>
+  </div>
